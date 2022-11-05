@@ -54,6 +54,7 @@ class GameScene extends Phaser.Scene {
     update(delta, time) {
         // code here
         background.tilePositionX += 2;
+
     }
 }
 export default GameScene;
