@@ -35,6 +35,7 @@ class GameScene extends Phaser.Scene {
         
         // background = this.add.tileSprite(0, 0, 450, 720, 'bg').setOrigin(0, 0).setDepth(1); //tileSprtie
 
+        
         // this.input.on('pointermove', (pointer)=>{
         //     ermine.x = pointer.x
         //     ermine.y = pointer.y
@@ -55,7 +56,6 @@ class GameScene extends Phaser.Scene {
            repeat: -1  
         })
 
-    
 
         bird = this.physics.add.sprite(220,400,'bird').setScale(0.5)
         this.anims.create({
@@ -84,8 +84,12 @@ class GameScene extends Phaser.Scene {
                 ermine.setVelocityY(300);
                 ermine.anims.play('ermineAni', true)
                
+            }else{
+                ermine.setVelocityY(0);
+                ermine.anims.play('ermineAni', false)
             }
-            else if(cursor.left.isDown){
+            
+            if(cursor.left.isDown){
                 ermine.setVelocityX(-300);
                 ermine.anims.play('ermineAni', true)
               
@@ -95,7 +99,6 @@ class GameScene extends Phaser.Scene {
                  
              }
              else{
-                ermine.setVelocityY(0);
                 ermine.setVelocityX(0);
                 ermine.anims.play('ermineAni', false)
             }
