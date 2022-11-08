@@ -41,7 +41,7 @@ class GameScene extends Phaser.Scene {
         // basketball = this.add.image(200,300,'basketball').setScale(0.1).setDepth(3);
         // football = this.add.image(250,300,'football').setScale(0.1).setDepth(1);
         // volleyball = this.add.image(250,350,'volleyball').setScale(0.2).setDepth(2);
-        bird = this.add.sprite(220,400,'bird').setScale(0.5)
+        bird = this.physics.add.sprite(220,400,'bird').setScale(0.5)
         this.anims.create({
            key: 'birdAni',
            frames: this.anims.generateFrameNumbers('bird', {
