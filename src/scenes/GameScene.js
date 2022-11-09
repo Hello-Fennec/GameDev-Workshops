@@ -76,6 +76,7 @@ class GameScene extends Phaser.Scene {
         })*/
 
         cursor = this.input.keyboard.createCursorKeys();
+        bird.setCollideWorldBounds(true);
 
        
 
@@ -87,11 +88,19 @@ class GameScene extends Phaser.Scene {
         //ermine.anims.play('ermineAni', true);
 
         if(cursor.up.isDown){
-            bird.setVelocityY(-200)
+            bird.setVelocityY(-1000)
         }else if(cursor.down.isDown){
-            bird.setVelocityY(200)
+            bird.setVelocityY(1000)
         }else{
             bird.setVelocityY(0)
+        }
+
+        if(cursor.left.isDown){  //isDown it's mean when you push cursor
+            bird.setVelocityX(-1000)
+        }else if(cursor.right.isDown){
+            bird.setVelocityX(1000)
+        }else{
+            bird.setVelocityX(0)
         }
     }
 
