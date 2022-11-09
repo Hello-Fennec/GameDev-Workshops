@@ -7,6 +7,7 @@ let basketball;
 let football;
 let volleyball;
 let bird;
+let cursor;
 
 class GameScene extends Phaser.Scene {
     constructor(test) {
@@ -58,7 +59,7 @@ class GameScene extends Phaser.Scene {
         //football = this.add.image(250,300,'football').setScale(0.1).setDepth(1);
         //volleyball = this.add.image(250,350,'volleyball').setScale(0.2).setDepth(2);
 
-        bird = this.add.sprite(220,400,'bird').setScale(0.5)
+        bird = this.physics.add.sprite(220,400,'bird').setScale(0.5) //add physics for movement
         this.anims.create({
             key: 'birdAni',
             frames: this.anims.generateFrameNumbers('bird', {
@@ -69,10 +70,12 @@ class GameScene extends Phaser.Scene {
             repeat: -1
         }) 
 
-        this.input.on('pointermove', (pointer)=>{ //เอ่าเมาท์ลากตัวละคร
+       /* this.input.on('pointermove', (pointer)=>{ //เอ่าเมาท์ลากตัวละคร
             bird.x = pointer.x
             bird.y = pointer.y
-        })
+        })*/
+
+        cursor = this.input.keyboard.createCursorKeys();
 
        
 
@@ -83,9 +86,14 @@ class GameScene extends Phaser.Scene {
         bird.anims.play('birdAni', true);
         //ermine.anims.play('ermineAni', true);
 
-
+        if(cursor.up.isDown){
+            bird.setVelocityY(-200)
+        }else if(cursor.down.isDown){
+            bird.setVelocityY(200)
+        }else{
+            bird.setVelocityY(0)
+        }
     }
-
 
 }
 export default GameScene;
