@@ -34,7 +34,7 @@ class GameScene extends Phaser.Scene {
     create() {
         //background = this.add.image(100, 350, 'bg'); //image
 
-        ermine = this.add.sprite(220, 400, 'ermine').setScale(0.5).setDepth(2)/*.setSize(420,185).setOffset(60,55)*/; //sprite
+       /* ermine = this.add.sprite(220, 400, 'ermine').setScale(0.5).setDepth(2)/*.setSize(420,185).setOffset(60,55); 
         this.anims.create({
             key: 'ermineAni',
             frames: this.anims.generateFrameNumbers('ermine', {
@@ -43,7 +43,7 @@ class GameScene extends Phaser.Scene {
             }),
             duration: 500,
             repeat: -1
-        })
+        })*/
         
         //ermine.setCollideWorldBounds(true);
 
@@ -65,9 +65,9 @@ class GameScene extends Phaser.Scene {
             start: 0,
             end: 7
             }),
-            duration: 500,
+            duration: 1000,
             repeat: -1
-        })
+        }) 
 
         //ลองทำตัว ermine
 
