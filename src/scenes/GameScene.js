@@ -69,7 +69,12 @@ class GameScene extends Phaser.Scene {
             repeat: -1
         }) 
 
-        //ลองทำตัว ermine
+        this.input.on('pointermove', (pointer)=>{ //เอ่าเมาท์ลากตัวละคร
+            bird.x = pointer.x
+            bird.y = pointer.y
+        })
+
+       
 
     }
 
