@@ -20,27 +20,35 @@ class GameScene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('bg','src/image/objectClass/backGround.png'); //background (image and tileSprite)
-        this.load.spritesheet('ermine','src/image/objectClass/playerErmine.png', 
-        {frameWidth: 500, frameHeight: 300}); //spritesheet
-        this.load.image('bullet','src/image/objectClass/Bullet.png');
-        this.load.image('basketball','src/image/objectClass/basketball.png');
-        this.load.image('football','src/image/objectClass/football.png');
-        this.load.image('volleyball','src/image/objectClass/volleyball.png')
-        this.load.spritesheet('bird','src/image/objectClass/bird.png',
-        {frameWidth: 410, frameHeight: 310});
-
-
+        this.load.image("bg", "src/image/objectClass/backGround.png"); //background (image and tileSprite)
+        this.load.spritesheet(
+            "ermine",
+            "src/image/objectClass/playerErmine.png",
+            { frameWidth: 500, frameHeight: 300 }
+        ); //spritesheet
+        this.load.image("bullet", "src/image/objectClass/Bullet.png");
+        this.load.image("basketball", "src/image/objectClass/basketball.png");
+        this.load.image("football", "src/image/objectClass/football.png");
+        this.load.image("volleyball", "src/image/objectClass/volleyball.png");
+        this.load.spritesheet("bird", "src/image/objectClass/bird.png", {
+            frameWidth: 410,
+            frameHeight: 310,
+        });
     }
 
     create() {
-        background = this.add.image(600,360,'bg'); //image
+        background = this.add.tileSprite(0, 0, 1200, 750, "bg").setOrigin(0, 0); //image
         // ermine = this.physics.add.sprite(220,400,'ermine').setScale(0.5).setDepth(2).setSize(420,200).setOffset(60,70); //sprite
-        
+
         // background = this.add.tileSprite(0, 0, 450, 720, 'bg').setOrigin(0, 0).setDepth(1); //tileSprtie
 
-        ermine = this.physics.add.sprite(220,400,'ermine').setScale(0.5).setDepth(2).setSize(420,200).setOffset(60,70)
-        
+        ermine = this.physics.add
+            .sprite(220, 400, "ermine")
+            .setScale(0.5)
+            .setDepth(2)
+            .setSize(420, 200)
+            .setOffset(60, 70);
+
         // this.input.on('pointermove', (pointer)=>{
         //     ermine.x = pointer.x
         //     ermine.y = pointer.y
@@ -49,44 +57,78 @@ class GameScene extends Phaser.Scene {
 
         // cursor = this.input.keyboard.createCursorKeys();
 
-        keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W)
-        keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A)
-        keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S)
-        keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D)
-        
-       
+        keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
+        keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+        keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
+        keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+
         this.anims.create({
-           key: 'ermineAni',
-           frames: this.anims.generateFrameNumbers('ermine', {
-            start: 0,
-            end: 2
-           }),
-           duration: 500,
-           repeat: -1  
-        })
+            key: "ermineAni",
+            frames: this.anims.generateFrameNumbers("ermine", {
+                start: 0,
+                end: 2,
+            }),
+            duration: 500,
+            repeat: -1,
+        });
 
-
-        bird = this.physics.add.sprite(220,400,'bird').setScale(0.5).setX(700).setY(500)
         this.anims.create({
-           key: 'birdAni',
-           frames: this.anims.generateFrameNumbers('bird', {
-            start: 0,
-            end: 7
-           }),
-           duration: 500,
-           repeat: -1  
-        })
+            key: "ermineStop",
+            frames: this.anims.generateFrameNumbers("ermine", {
+                start: 1,
+                end: 1,
+            }),
+            duration: 500,
+            repeat: -1,
+        });
 
+        bird = this.physics.add
+            .sprite(220, 400, "bird")
+            .setScale(0.5)
+            .setX(900)
+            .setY(450)
+            .setSize(185,170)
+            .setOffset(118,90);
+        this.anims.create({
+            key: "birdAni",
+            frames: this.anims.generateFrameNumbers("bird", {
+                start: 0,
+                end: 7,
+            }),
+            duration: 500,
+            repeat: -1,
+        });
 
-        
-        this.physics.add.collider(ermine, bird,()=>{
-                this.scene.start("EndGame")
-        })
+        this.physics.add.collider(ermine, bird, () => {
+            this.scene.start("EndGame");
+        });
         // ermine.setCollideWorldBounds(true);
         // bird.setImmovable()
     }
 
     update(delta, time) {
+        background.tilePositionX += 2;
+        // bird.setVelocityX(-100)
+
+        if (keyW.isDown) {
+            ermine.setVelocityY(-300);
+            // ermine.anims.play('ermineAni',true)
+        } else if (keyS.isDown) {
+            ermine.setVelocityY(300);
+            // ermine.anims.play('ermineAni',true)
+        } else if (keyA.isDown) {
+            ermine.setVelocityX(-300);
+            ermine.anims.play("ermineAni", true);
+            // ermine.anims.play('ermineAni', true)
+        } else if (keyD.isDown) {
+            ermine.setVelocityX(300);
+            ermine.anims.play("ermineAni", true);
+            //  ermine.anims.play('ermineAni', true)
+        } else {
+            ermine.anims.play("ermineStop", true);
+            ermine.setVelocityY(0).setVelocityX(0);
+        }
+
         // if(!cursor.isDown){
         //     if(cursor.up.isDown){
         //         ermine.setVelocityY(-300);
@@ -94,79 +136,50 @@ class GameScene extends Phaser.Scene {
         //     }else if(cursor.down.isDown){
         //         ermine.setVelocityY(300);
         //         ermine.anims.play('ermineAni', true)
-               
+
         //     }else{
         //         ermine.setVelocityY(0);
         //         ermine.anims.play('ermineAni', false)
         //     }
-            
+
         //     if(cursor.left.isDown){
         //         ermine.setVelocityX(-300);
         //         ermine.anims.play('ermineAni', true)
-              
+
         //      }else if(cursor.right.isDown){
         //          ermine.setVelocityX(300);
         //          ermine.anims.play('ermineAni', true)
-                 
+
         //      }
         //      else{
         //         ermine.setVelocityX(0);
         //         ermine.anims.play('ermineAni', false)
         //     }
-           
-                // if(cursor.up.isDown){
-                //     ermine.setVelocityY(-300);
-                //     ermine.anims.play('ermineAni',true)
-                    
-                // }else if(cursor.down.isDown){
-                //     ermine.setVelocityY(300);
-                //     ermine.anims.play('ermineAni',true)
-  
-                // }else {
-                //     ermine.setVelocityY(0);
-                // }
-                
-                // if(cursor.left.isDown){
-                //     ermine.setVelocityX(-300);
-                //     ermine.anims.play('ermineAni',true)
-                //     // ermine.anims.play('ermineAni', true)
-                  
-                //  }else if(cursor.right.isDown){
-                //      ermine.setVelocityX(300);
-                //      ermine.anims.play('ermineAni',true)
-                //     //  ermine.anims.play('ermineAni', true)    
-                // }else{
-                //     ermine.setVelocityX(0)
-                // }
-            
 
-                if(keyW.isDown){
-                    ermine.setVelocityY(-300);
-                    ermine.anims.play('ermineAni',true)
-                    
-                }else if(keyS.isDown){
-                    ermine.setVelocityY(300);
-                    ermine.anims.play('ermineAni',true)
-  
-                }else {
-                    ermine.setVelocityY(0);
-                }
-                
-                if(keyA.isDown){
-                    ermine.setVelocityX(-300);
-                    ermine.anims.play('ermineAni',true)
-                    // ermine.anims.play('ermineAni', true)
-                  
-                 }else if(keyD.isDown){
-                     ermine.setVelocityX(300);
-                     ermine.anims.play('ermineAni',true)
-                    //  ermine.anims.play('ermineAni', true)    
-                }else{
-                    ermine.setVelocityX(0)
-                }
-        
-        
+        // if(cursor.up.isDown){
+        //     ermine.setVelocityY(-300);
+        //     ermine.anims.play('ermineAni',true)
+
+        // }else if(cursor.down.isDown){
+        //     ermine.setVelocityY(300);
+        //     ermine.anims.play('ermineAni',true)
+
+        // }else {
+        //     ermine.setVelocityY(0);
+        // }
+
+        // if(cursor.left.isDown){
+        //     ermine.setVelocityX(-300);
+        //     ermine.anims.play('ermineAni',true)
+        //     // ermine.anims.play('ermineAni', true)
+
+        //  }else if(cursor.right.isDown){
+        //      ermine.setVelocityX(300);
+        //      ermine.anims.play('ermineAni',true)
+        //     //  ermine.anims.play('ermineAni', true)
+        // }else{
+        //     ermine.setVelocityX(0)
+        // }
     }
 }
 export default GameScene;
-
