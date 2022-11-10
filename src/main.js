@@ -2,6 +2,8 @@ import 'phaser';
 import Phaser from 'phaser';
 import GameScene from './scenes/GameScene';
 import MainMenu from './scenes/MainMenu';
+import Menu from './scenes/Menu';
+import ZScene from './scenes/ZScene';
 const config = {
     // For more settings see <https://github.com/photonstorm/phaser/blob/master/src/boot/Config.js>
     type: Phaser.WEBGL,
@@ -17,8 +19,10 @@ const config = {
         }
     },
     scene: [
-        MainMenu,
-        GameScene
+        // MainMenu,
+        // GameScene
+        Menu,
+        ZScene
     ],
     
     
