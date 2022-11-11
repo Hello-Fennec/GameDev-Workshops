@@ -8,6 +8,10 @@ let football;
 let volleyball;
 let bird;
 let cursor;
+let keyW;
+let keyA;
+let keyS;
+let keyD;
 
 class GameScene extends Phaser.Scene {
     constructor(test) {
@@ -29,7 +33,8 @@ class GameScene extends Phaser.Scene {
 
         this.load.spritesheet('bird', 'src/image/objectClass/bird.png',
             { frameWidth: 410, frameHeight: 310 });
-        // test
+        
+        
     }
 
     create() {
@@ -75,9 +80,14 @@ class GameScene extends Phaser.Scene {
             bird.y = pointer.y
         })*/
 
-        cursor = this.input.keyboard.createCursorKeys();
-        bird.setCollideWorldBounds(true);
+        bird.setCollideWorldBounds(true); //ไม่ให้หลุดกรอบ
 
+        //cursor = this.input.keyboard.createCursorKeys();  
+
+        keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W) //ประกาศึตัวแปร
+        keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A)
+        keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S)
+        keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D)      
        
 
     }
@@ -87,7 +97,7 @@ class GameScene extends Phaser.Scene {
         bird.anims.play('birdAni', true);
         //ermine.anims.play('ermineAni', true);
 
-        if(cursor.up.isDown){
+        /*if(cursor.up.isDown){
             bird.setVelocityY(-1000)
         }else if(cursor.down.isDown){
             bird.setVelocityY(1000)
@@ -101,9 +111,27 @@ class GameScene extends Phaser.Scene {
             bird.setVelocityX(1000)
         }else{
             bird.setVelocityX(0)
+        }*/
+
+        if(keyW.isDown){
+            bird.setVelocityY(-500)
+        }else if(keyS.isDown){
+            bird.setVelocityY(500)
+        }else{
+            bird.setVelocityY(0)
         }
+        
+        if(keyA.isDown){
+            bird.setVelocityX(-750)
+        }else if(keyD.isDown){
+            bird.setVelocityX(750)
+        }else{
+            bird.setVelocityX(0)
+        }
+
+
     }
 
 }
-export default GameScene;
+export default GameScene; //copy all use ctrl+a
 
