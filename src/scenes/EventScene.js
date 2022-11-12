@@ -11,6 +11,7 @@ class EventScene extends Phaser.Scene {
             key: "EventScene",
         });
     }
+    
 
     preload() {
         this.load.image('R', 'src/image/TimeEventClass/Rapid.png') // player
