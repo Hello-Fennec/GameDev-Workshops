@@ -14,7 +14,7 @@ class ZScene extends Phaser.Scene {
         });
     }
     preload() {
-        this.load.image('bg')
+        this.load.image('bg','src/image/objectClass/backGround.png')
         this.load.spritesheet('dino','src/image/dino/sheets/doux.png',{frameWidth: 24, frameHeight: 24});
     }
     create() {
@@ -29,6 +29,8 @@ class ZScene extends Phaser.Scene {
         // basketball = this.add.image(200,300,'basketball').setScale(0.1).setDepth(3);
         // football = this.add.image(250,300,'football').setScale(0.1).setDepth(1);
         // volleyball = this.add.image(250,350,'volleyball').setScale(0.2).setDepth(2);
+
+        bg = this.add.image(1080,720,'bg').setOrigin(0, 0)
         dino = this.physics.add.sprite(500,400,'dino').setScale(5)
         this.anims.create({
            key: 'dinoAni',
