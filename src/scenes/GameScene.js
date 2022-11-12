@@ -38,9 +38,9 @@ class GameScene extends Phaser.Scene {
     }
 
     create() {
-        //background = this.add.image(100, 350, 'bg'); //image
+        background = this.add.image(100, 350, 'bg'); //image
 
-       /* ermine = this.add.sprite(220, 400, 'ermine').setScale(0.5).setDepth(2)/*.setSize(420,185).setOffset(60,55); 
+       ermine = this.physics.add.sprite(220, 400, 'ermine').setScale(0.5).setDepth(2).setSize(420,185).setOffset(60,55); 
         this.anims.create({
             key: 'ermineAni',
             frames: this.anims.generateFrameNumbers('ermine', {
@@ -49,12 +49,12 @@ class GameScene extends Phaser.Scene {
             }),
             duration: 500,
             repeat: -1
-        })*/
+        })
         
-        //ermine.setCollideWorldBounds(true);
+        ermine.setCollideWorldBounds(true);
 
 
-       // background = this.add.tileSprite(0, 0, 450, 720, 'bg').setOrigin(0, 0); //tileSprtie
+        background = this.add.tileSprite(0, 0, 450, 720, 'bg').setOrigin(0, 0); //tileSprtie
         //bullet = this.physics.add.staticGroup(); //GroupObject
         //bullet.create(200,300,'bullet')
         //bullet.create(500,300,'bullet')
@@ -64,7 +64,7 @@ class GameScene extends Phaser.Scene {
         //football = this.add.image(250,300,'football').setScale(0.1).setDepth(1);
         //volleyball = this.add.image(250,350,'volleyball').setScale(0.2).setDepth(2);
 
-        bird = this.physics.add.sprite(220,400,'bird').setScale(0.5) //add physics for movement
+        /*bird = this.physics.add.sprite(220,400,'bird').setScale(0.5) //add physics for movement
         this.anims.create({
             key: 'birdAni',
             frames: this.anims.generateFrameNumbers('bird', {
@@ -73,29 +73,29 @@ class GameScene extends Phaser.Scene {
             }),
             duration: 1000,
             repeat: -1
-        }) 
+        }) */
 
        /* this.input.on('pointermove', (pointer)=>{ //เอ่าเมาท์ลากตัวละคร
             bird.x = pointer.x
             bird.y = pointer.y
         })*/
 
-        bird.setCollideWorldBounds(true); //ไม่ให้หลุดกรอบ
+        //bird.setCollideWorldBounds(true); //ไม่ให้หลุดกรอบ
 
         //cursor = this.input.keyboard.createCursorKeys();  
 
-        keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W) //ประกาศึตัวแปร
+        /*keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W) //ประกาศึตัวแปร
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A)
         keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S)
-        keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D)      
+        keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D)   */   
        
 
     }
 
     update(delta, time) {
-        //background.tilePositionX += 2; //tileSprite
-        bird.anims.play('birdAni', true);
-        //ermine.anims.play('ermineAni', true);
+        background.tilePositionX += 2; //tileSprite
+        //bird.anims.play('birdAni', true);
+        ermine.anims.play('ermineAni', true);
 
         /*if(cursor.up.isDown){
             bird.setVelocityY(-1000)
@@ -113,7 +113,7 @@ class GameScene extends Phaser.Scene {
             bird.setVelocityX(0)
         }*/
 
-        if(keyW.isDown){
+        /*if(keyW.isDown){
             bird.setVelocityY(-500)
         }else if(keyS.isDown){
             bird.setVelocityY(500)
@@ -127,7 +127,7 @@ class GameScene extends Phaser.Scene {
             bird.setVelocityX(750)
         }else{
             bird.setVelocityX(0)
-        }
+        }*/
 
 
     }
