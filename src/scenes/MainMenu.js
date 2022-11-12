@@ -1,6 +1,7 @@
 import Phaser from "phaser";
 import { PlayAnimation } from "phaser/src/actions";
 
+
 let playButton;
 
 class MainMenu extends Phaser.Scene {
