@@ -15,7 +15,7 @@ class MainMenu extends Phaser.Scene {
 
     create() {
         playButton = this.add.image(560,360,'startButton').setScale(0.5)
-        playButton.setInteractive();
+        playButton.setInteractive()
         playButton.on("pointerdown",()=>{
             this.scene.start("GameScene")
         })
