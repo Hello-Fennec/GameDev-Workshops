@@ -1,6 +1,9 @@
 import 'phaser';
 import Phaser from 'phaser';
 import GameScene from './scenes/GameScene';
+import MainMenu from './scenes/MainMenu';
+import WorkShop from './scenes/WorkShop';
+import EvenScene from './scenes/EvenScene';
 
 const config = {
     // For more settings see <https://github.com/photonstorm/phaser/blob/master/src/boot/Config.js>
@@ -8,7 +11,7 @@ const config = {
     pixelArt: true,
     roundPixels: true,
     parent: 'content',
-    width: 450,
+    width: 800,
     height: 700,
     physics: {
         default: 'arcade',
@@ -17,7 +20,11 @@ const config = {
         }
     },
     scene: [
-        GameScene
+        //MainMenu,GameScene
+        MainMenu,WorkShop
+       // WorkShop2
+        //  EvenScene
+      //WorkShop3
     ],
     
     
