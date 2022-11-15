@@ -1,6 +1,7 @@
 import Phaser from "phaser";
 
 let play;
+let bg;
 
 class Menu extends Phaser.Scene {
     constructor(test) {
