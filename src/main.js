@@ -2,7 +2,8 @@ import 'phaser';
 import Phaser from 'phaser';
 import GameScene from './scenes/GameScene';
 import MainMenu from './scenes/MainMenu';
-import EventScene from './scenes/EventScene';
+import MonsterCreation from './scenes/MonsterCreation';
+import Bullet from './scenes/Bullet';
 
 const config = {
     // For more settings see <https://github.com/photonstorm/phaser/blob/master/src/boot/Config.js>
@@ -19,7 +20,8 @@ const config = {
         }
     },
     scene: [
-        EventScene,
+        Bullet,
+        MonsterCreation,
         MainMenu,
         GameScene
     ],

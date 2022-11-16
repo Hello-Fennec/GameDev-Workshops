@@ -5,10 +5,13 @@ let event
 let monGroup
 let cat
 
-class EventScene extends Phaser.Scene {
+let score
+let text = "Hello World!"
+
+class MonsterCreation extends Phaser.Scene {
     constructor(test) {
         super({
-            key: "EventScene",
+            key: "MonsterCreation",
         });
     }
     
@@ -49,16 +52,20 @@ class EventScene extends Phaser.Scene {
         })
 
 
+        score = this.add.text(15, 15, text)
+        score.setText("Hello Fennec!")
+
+
     }
 
     update(delta, time) {
         for(let i = 0; i < monGroup.getChildren().length; i++){ //ทำให้เรารู้ว่าใน group มีกี่ตัว
-            if(monGroup.getChildren()[i].y > 300){ //i จะเก็บ index ทุกตัว
+            if(monGroup.getChildren()[i].y > 750){ //i จะเก็บ index ทุกตัว
                 monGroup.getChildren()[i].destroy()
             }
         }
 
     }
 }
-export default EventScene;
+export default MonsterCreation;
 
