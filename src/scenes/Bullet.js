@@ -20,12 +20,12 @@ class Bullet extends Phaser.Scene {
         
     }
     create() {
-        player = this.physic.add.image(225, 600, 'player')
+        player = this.physic.add.image(225, 300, 'player')
         player.setDepth(2)
         player.setCollideWorldBounds(true)
         
         bulletGroup = this.physic.addGroup()
-        
+
         event = this.time.addEvent({
             delay: 500,
             callback: function() {
