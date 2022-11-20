@@ -4,6 +4,9 @@ import GameScene from './scenes/GameScene';
 import MainMenu from './scenes/MainMenu';
 import MonsterCreation from './scenes/MonsterCreation';
 import Bullet from './scenes/Bullet';
+import Scene1 from './scenes/Workshop/Scene1';
+import Scene2 from './scenes/Workshop/Scene2';
+import Scene3 from './scenes/Workshop/Scene3';
 
 const config = {
     // For more settings see <https://github.com/photonstorm/phaser/blob/master/src/boot/Config.js>
@@ -20,10 +23,9 @@ const config = {
         }
     },
     scene: [
-        Bullet,
-        MonsterCreation,
-        MainMenu,
-        GameScene
+        Scene1,
+        Scene2,
+        Scene3
     ],
     
     
